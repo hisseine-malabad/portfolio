@@ -1,14 +1,24 @@
-media: images
+media:
+  input: documents
+  output: /documents
 
 content:
   - name: publications
     label: Travaux et publications
     type: collection
     path: publications
+    format: yaml-frontmatter
     fields:
       - name: title
         label: Titre
         type: string
+        required: true
+      - name: date
+        label: Date
+        type: date
+      - name: description
+        label: Résumé
+        type: text
       - name: body
-        label: Contenu
+        label: Texte de la publication
         type: rich-text
