@@ -1,0 +1,21 @@
+afficher: true
+titre_menu: Documents
+titre: Documents
+introduction: Retrouvez ici mon CV, mes mémoires universitaires, mes articles et les autres documents que je mets à disposition.
+fichiers:
+  - titre: Curriculum vitæ
+    categorie: CV
+    description: Version à jour de mon curriculum vitæ.
+    fichier: documents/cv-hisseine-abdoulaye-malabad.pdf
+  - titre: Le principe de laïcité dans le sport français
+    categorie: Mémoire universitaire
+    description: Mémoire de recherche de Master 1.
+    fichier: documents/memoire-master1-laicite-sport.pdf
+  - titre: Une démocratie féminisée ?
+    categorie: Article
+    description: Étude juridique — version PDF.
+    fichier: documents/une-democratie-feminisee.pdf
+  - titre: Une démocratie féminisée ? (version Word)
+    categorie: Article
+    description: Étude juridique — version Word modifiable.
+    fichier: documents/une-democratie-feminisee.docx

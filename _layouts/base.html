@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="{{ site.description }}">
+<title>{% if page.title %}{{ page.title }} | {{ site.data.accueil.prenom }} {{ site.data.accueil.nom }}{% else %}{{ site.title }}{% endif %}</title>
+<link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}?v={{ site.time | date: '%s' }}">
+</head>
+<body>
+{%- assign a = site.data.accueil -%}
+{%- assign home = '/' | relative_url -%}
+<header>
+<div class="nav">
+<a class="brand" href="{{ home }}#accueil">{{ a.nom_menu }}</a>
+<input id="menu-toggle" type="checkbox">
+<label for="menu-toggle" class="menu-label" aria-label="Ouvrir le menu">☰ Menu</label>
+<nav aria-label="Navigation principale">
+{% if site.data.apropos.afficher %}<a href="{{ home }}#apropos">{{ site.data.apropos.titre_menu }}</a>{% endif %}
+{% if site.data.formation.afficher %}<a href="{{ home }}#formation">{{ site.data.formation.titre_menu }}</a>{% endif %}
+{% if site.data.recherches.afficher %}<a href="{{ home }}#recherche">{{ site.data.recherches.titre_menu }}</a>{% endif %}
+{% if site.data.documents.afficher %}<a href="{{ home }}#documents">{{ site.data.documents.titre_menu }}</a>{% endif %}
+{% if site.data.experiences.afficher %}<a href="{{ home }}#experience">{{ site.data.experiences.titre_menu }}</a>{% endif %}
+{% if site.data.engagements.afficher %}<a href="{{ home }}#engagement">{{ site.data.engagements.titre_menu }}</a>{% endif %}
+{% for r in site.data.rubriques %}{% if r.afficher and r.titre_menu != blank %}<a href="{{ home }}#{{ r.titre | slugify: 'latin' }}">{{ r.titre_menu }}</a>{% endif %}{% endfor %}
+<a href="{{ home }}#contact">{{ site.data.contact.titre_menu }}</a>
+</nav>
+</div>
+</header>
+<main>
+{{ content }}
+</main>
+<footer class="foot">© <span id="year">{{ site.time | date: '%Y' }}</span> {{ a.prenom }} {{ a.nom }} · {{ site.data.contact.pied_de_page }}</footer>
+<script>document.getElementById('year').textContent=new Date().getFullYear();document.querySelectorAll('nav a').forEach(function(x){x.addEventListener('click',function(){document.getElementById('menu-toggle').checked=false})});</script>
+</body>
+</html>

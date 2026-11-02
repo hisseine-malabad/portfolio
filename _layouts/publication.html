@@ -1,0 +1,13 @@
+---
+layout: base
+---
+<section class="container article-page">
+<a class="textlink back" href="{{ '/' | relative_url }}#recherche">← Retour aux recherches</a>
+<div class="accent"></div>
+{% if page.repere != blank %}<div class="meta">{{ page.repere }}</div>{% endif %}
+<h2>{{ page.title }}</h2>
+{% if page.resume != blank %}<p class="intro"><em>{{ page.resume }}</em></p>{% endif %}
+<div class="rich">{{ content }}</div>
+{% if page.pdf != blank %}<p><a class="btn" href="{% include lien.html chemin=page.pdf %}" target="_blank" rel="noopener">Lire le PDF</a></p>{% endif %}
+{% if page.word != blank %}<p><a class="textlink" href="{% include lien.html chemin=page.word %}" download>Télécharger la version Word</a></p>{% endif %}
+</section>

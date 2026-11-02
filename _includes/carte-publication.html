@@ -1,0 +1,11 @@
+{%- assign t = include.travail -%}
+<article class="card">
+  {% if t.repere != blank %}<div class="meta">{{ t.repere }}</div>{% endif %}
+  <h3>{{ t.title }}</h3>
+  {% if t.resume != blank %}<p>{{ t.resume }}</p>{% endif %}
+  {% assign corps = t.content | strip_html | strip %}
+  {% if corps != blank %}<p><a class="textlink" href="{{ t.url | relative_url }}">Lire le texte en ligne →</a></p>{% endif %}
+  {% if t.pdf != blank %}<p><a class="textlink" href="{% include lien.html chemin=t.pdf %}" target="_blank" rel="noopener">Lire le texte intégral (PDF) ↗</a> · <a class="textlink" href="{% include lien.html chemin=t.pdf %}" download>Télécharger le PDF</a></p>{% endif %}
+  {% if t.word != blank %}<p><a class="textlink" href="{% include lien.html chemin=t.word %}" download>Télécharger la version Word</a></p>{% endif %}
+  {% if t.note != blank %}<p class="meta">{{ t.note }}</p>{% endif %}
+</article>

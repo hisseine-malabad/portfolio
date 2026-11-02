@@ -1,0 +1,15 @@
+# Réglages techniques du site — ne pas modifier sans nécessité.
+title: "Hisseine Abdoulaye Malabad | Droit public"
+description: "Portfolio académique et professionnel de Hisseine Abdoulaye Malabad, étudiant en Master 2 de droit public."
+lang: fr
+url: "https://hisseine-malabad.github.io"
+baseurl: "/portfolio"
+markdown: kramdown
+collections:
+  publications:
+    output: true
+    permalink: /publications/:name/
+defaults:
+  - scope: { type: publications }
+    values: { layout: publication }
+exclude: [GUIDE-ADMINISTRATION.md, Gemfile, Gemfile.lock, vendor, .pages.yml]

@@ -1,0 +1,1 @@
+{%- assign format_ext = include.chemin | split: '.' | last | downcase -%}{%- case format_ext -%}{%- when 'pdf' -%}PDF{%- when 'doc' or 'docx' or 'odt' -%}Word{%- when 'jpg' or 'jpeg' or 'png' or 'webp' -%}Image{%- else -%}{{ format_ext | upcase }}{%- endcase -%}

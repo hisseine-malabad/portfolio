@@ -1,24 +1,217 @@
 media:
-  input: documents
-  output: /documents
+  - name: documents
+    label: Documents (PDF, Word)
+    input: documents
+    output: documents
+    extensions: [pdf, doc, docx, odt]
+  - name: images
+    label: Images
+    input: images
+    output: images
+    extensions: [jpg, jpeg, png, webp]
 
 content:
-  - name: publications
-    label: Travaux et publications
-    type: collection
-    path: publications
-    format: yaml-frontmatter
+  - name: accueil
+    label: "1. Accueil"
+    type: file
+    path: _data/accueil.yml
+    format: yaml
     fields:
-      - name: title
-        label: Titre
-        type: string
-        required: true
-      - name: date
-        label: Date
-        type: date
-      - name: description
-        label: Résumé
-        type: text
-      - name: body
-        label: Texte de la publication
-        type: rich-text
+      - { name: prenom, label: Prénom, type: string, required: true }
+      - { name: nom, label: Nom, type: string, required: true }
+      - { name: nom_menu, label: Nom affiché en haut à gauche, type: string }
+      - { name: surtitre, label: Petite ligne au-dessus du nom, type: string }
+      - { name: presentation, label: Présentation, type: text }
+      - name: photo
+        label: Photographie de profil
+        type: image
+        options: { media: images }
+      - { name: bouton_principal, label: Texte du bouton doré, type: string }
+      - { name: bouton_secondaire, label: Texte du second bouton, type: string }
+
+  - name: apropos
+    label: "2. À propos"
+    type: file
+    path: _data/apropos.yml
+    format: yaml
+    fields:
+      - { name: afficher, label: Afficher cette rubrique, type: boolean, default: true }
+      - { name: titre_menu, label: Nom dans le menu, type: string }
+      - { name: titre, label: Titre de la rubrique, type: string }
+      - { name: texte, label: Texte, type: rich-text }
+      - { name: domaines, label: Domaines d'intérêt (étiquettes), type: string, list: true }
+
+  - name: formation
+    label: "3. Formation et compétences"
+    type: file
+    path: _data/formation.yml
+    format: yaml
+    fields:
+      - { name: afficher, label: Afficher cette rubrique, type: boolean, default: true }
+      - { name: titre_menu, label: Nom dans le menu, type: string }
+      - { name: titre, label: Titre de la rubrique, type: string }
+      - name: parcours
+        label: Parcours universitaire
+        type: object
+        list: true
+        fields:
+          - { name: periode, label: Période, type: string }
+          - { name: diplome, label: Diplôme, type: string }
+          - { name: description, label: Description, type: text }
+      - { name: titre_complementaires, label: Titre des formations complémentaires, type: string }
+      - name: complementaires
+        label: Formations complémentaires
+        type: object
+        list: true
+        fields:
+          - { name: periode, label: Période, type: string }
+          - { name: intitule, label: Intitulé, type: string }
+          - { name: organisme, label: Organisme, type: text }
+      - { name: titre_competences, label: Titre des compétences, type: string }
+      - { name: competences, label: Langues et compétences, type: string, list: true }
+
+  - name: recherches
+    label: "4. Recherches — textes de la rubrique"
+    type: file
+    path: _data/recherches.yml
+    format: yaml
+    fields:
+      - { name: afficher, label: Afficher cette rubrique, type: boolean, default: true }
+      - { name: titre_menu, label: Nom dans le menu, type: string }
+      - { name: titre, label: Titre de la rubrique, type: string }
+      - { name: introduction, label: Introduction, type: text }
+      - { name: titre_memoires, label: Sous-titre des mémoires, type: string }
+      - { name: titre_articles, label: Sous-titre des articles, type: string }
+
+  - name: publications
+    label: "4. Recherches — mémoires et articles"
+    type: collection
+    path: _publications
+    format: yaml-frontmatter
+    filename: "{primary}.md"
+    view:
+      primary: title
+      fields: [title, categorie, date]
+      sort: date
+      order: desc
+    fields:
+      - { name: title, label: Titre, type: string, required: true }
+      - name: categorie
+        label: Catégorie
+        type: select
+        options:
+          values: [Mémoire universitaire, Article, Contribution, Communication]
+      - { name: repere, label: Petite ligne au-dessus du titre (ex. « Mémoire · Master 2 »), type: string }
+      - { name: date, label: Date (sert au classement), type: date }
+      - { name: resume, label: Résumé, type: text }
+      - name: pdf
+        label: Fichier PDF
+        type: file
+        options: { media: documents }
+      - name: word
+        label: Fichier Word (facultatif)
+        type: file
+        options: { media: documents }
+      - { name: note, label: Mention complémentaire (facultatif), type: string }
+      - { name: afficher, label: Afficher sur le site, type: boolean, default: true }
+      - { name: body, label: Texte en ligne (facultatif — crée une page de lecture), type: rich-text }
+
+  - name: documents
+    label: "5. Documents (CV, mémoires, articles…)"
+    type: file
+    path: _data/documents.yml
+    format: yaml
+    fields:
+      - { name: afficher, label: Afficher cette rubrique, type: boolean, default: true }
+      - { name: titre_menu, label: Nom dans le menu, type: string }
+      - { name: titre, label: Titre de la rubrique, type: string }
+      - { name: introduction, label: Introduction, type: text }
+      - name: fichiers
+        label: Documents publiés
+        type: object
+        list: true
+        fields:
+          - { name: titre, label: Titre, type: string }
+          - name: categorie
+            label: Catégorie
+            type: select
+            options:
+              values: [CV, Mémoire universitaire, Article, Attestation, Autre]
+          - { name: description, label: Description, type: string }
+          - name: fichier
+            label: Fichier
+            type: file
+            options: { media: documents }
+
+  - name: experiences
+    label: "6. Expériences professionnelles"
+    type: file
+    path: _data/experiences.yml
+    format: yaml
+    fields:
+      - { name: afficher, label: Afficher cette rubrique, type: boolean, default: true }
+      - { name: titre_menu, label: Nom dans le menu, type: string }
+      - { name: titre, label: Titre de la rubrique, type: string }
+      - name: liste
+        label: Expériences
+        type: object
+        list: true
+        fields:
+          - { name: repere, label: Période / lieu, type: string }
+          - { name: titre, label: Poste, type: string }
+          - { name: description, label: Description, type: text }
+
+  - name: engagements
+    label: "7. Engagements et distinctions"
+    type: file
+    path: _data/engagements.yml
+    format: yaml
+    fields:
+      - { name: afficher, label: Afficher cette rubrique, type: boolean, default: true }
+      - { name: titre_menu, label: Nom dans le menu, type: string }
+      - { name: titre, label: Titre de la rubrique, type: string }
+      - name: liste
+        label: Engagements et distinctions
+        type: object
+        list: true
+        fields:
+          - { name: repere, label: Date / lieu (facultatif), type: string }
+          - { name: titre, label: Titre, type: string }
+          - { name: description, label: Description, type: text }
+
+  - name: rubriques
+    label: "Rubriques supplémentaires"
+    type: file
+    path: _data/rubriques.yml
+    format: yaml
+    list: true
+    fields:
+      - { name: titre, label: Titre de la rubrique, type: string, required: true }
+      - { name: titre_menu, label: Nom dans le menu (laisser vide pour ne pas l'y mettre), type: string }
+      - { name: afficher, label: Afficher cette rubrique, type: boolean, default: true }
+      - { name: contenu, label: Contenu, type: rich-text }
+      - name: fichier
+        label: Document joint (facultatif)
+        type: file
+        options: { media: documents }
+      - { name: libelle_fichier, label: Texte du lien vers le document, type: string }
+
+  - name: contact
+    label: "8. Contact"
+    type: file
+    path: _data/contact.yml
+    format: yaml
+    fields:
+      - { name: titre_menu, label: Nom dans le menu, type: string }
+      - { name: titre, label: Titre de la rubrique, type: string }
+      - { name: texte, label: Texte d'introduction, type: text }
+      - { name: email, label: Adresse électronique, type: string }
+      - { name: linkedin, label: Adresse du profil LinkedIn (https://…), type: string }
+      - name: cv
+        label: CV (fichier)
+        type: file
+        options: { media: documents }
+      - { name: titre_bouton, label: Titre au-dessus du bouton, type: string }
+      - { name: texte_bouton, label: Texte au-dessus du bouton, type: string }
+      - { name: libelle_bouton, label: Texte du bouton, type: string }
+      - { name: pied_de_page, label: Texte du pied de page, type: string }

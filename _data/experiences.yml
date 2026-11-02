@@ -1,0 +1,13 @@
+afficher: true
+titre_menu: Expériences
+titre: Expériences professionnelles
+liste:
+  - repere: Depuis 2023 · Chambéry
+    titre: Assistant d’éducation — Lycée Vaugelas
+    description: Accompagnement et encadrement des élèves, surveillance de l’internat, gestion de situations quotidiennes et participation à la vie éducative de l’établissement.
+  - repere: Lycée Vaugelas · Chambéry
+    titre: Organisation et jury de concours d’éloquence
+    description: Participation à l’organisation des concours d’éloquence du lycée Vaugelas et aux jurys chargés d’évaluer les prestations des candidats.
+  - repere: Compétences transversales
+    titre: Organisation et communication
+    description: Coordination d’activités, expression orale, rédaction institutionnelle et travail en équipe dans des contextes variés.

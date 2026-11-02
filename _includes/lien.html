@@ -1,0 +1,1 @@
+{%- assign lien_p = include.chemin | strip -%}{%- if lien_p contains '://' or lien_p contains 'mailto:' -%}{{ lien_p }}{%- else -%}{%- assign lien_c = lien_p | slice: 0 -%}{%- if lien_c == '/' -%}{%- assign lien_p = lien_p | slice: 1, 1000 -%}{%- endif -%}{{ lien_p | prepend: '/' | relative_url | uri_escape | replace: '%25', '%' }}{%- endif -%}

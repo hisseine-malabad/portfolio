@@ -1,0 +1,33 @@
+afficher: true
+titre_menu: Formation
+titre: Formation et compétences
+parcours:
+  - periode: 2026–2027
+    diplome: Master 2 — Droit public
+    description: Université Savoie Mont Blanc, Chambéry. Orientation vers la recherche juridique et la poursuite d’études doctorales.
+  - periode: 2025–2026
+    diplome: Master 1 — Droit public général
+    description: Enseignements en droit administratif, droit constitutionnel, droit de l’environnement, droit des contrats publics et droit de l’Union européenne.
+  - periode: 2024–2025
+    diplome: Licence 3 — Droit public
+    description: Université Savoie Mont Blanc. Travaux consacrés notamment au domaine public et aux occupations commerciales.
+titre_complementaires: Formations complémentaires à distance
+complementaires:
+  - periode: Septembre – octobre 2023
+    intitule: Droit des contrats de travail
+    organisme: Conservatoire national des arts et métiers (CNAM).
+  - periode: Juillet 2023
+    intitule: Rôle du citoyen dans la société
+    organisme: Gendarmerie nationale française.
+  - periode: Janvier – février 2022
+    intitule: Politique migratoire et intégration régionale en Afrique
+    organisme: Institut africain de développement économique et de planification (IDEP) et Organisation internationale pour les migrations (OIM).
+titre_competences: Langues et compétences
+competences:
+  - Français
+  - Arabe — attestation C2
+  - Anglais — universitaire
+  - Recherche documentaire
+  - Analyse juridique
+  - Rédaction juridique
+  - Prise de parole

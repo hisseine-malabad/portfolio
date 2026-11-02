@@ -1,0 +1,12 @@
+afficher: true
+titre_menu: À propos
+titre: À propos
+texte: >-
+  <p>Mon parcours s’inscrit à la rencontre de la formation juridique, de la réflexion académique et de l’engagement collectif. Originaire du Tchad, je poursuis mes études en France avec un intérêt particulier pour les questions de droit public, de libertés fondamentales et de droit comparé.</p>
+  <p>Je souhaite développer une démarche de recherche rigoureuse, attentive à la fois aux constructions juridiques et à leurs implications concrètes dans la société. Mon ambition est de poursuivre cette réflexion dans le cadre d’un doctorat.</p>
+domaines:
+  - Droit administratif
+  - Libertés fondamentales
+  - Droit comparé
+  - Droit de l’environnement
+  - Expression orale
